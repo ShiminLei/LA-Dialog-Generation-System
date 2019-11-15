@@ -34,6 +34,8 @@ def get_config():
 data_arg = add_argument_group('Data')
 data_arg.add_argument('--data_dir', type=str, nargs='+', default=['data/ptb'])
 data_arg.add_argument('--log_dir', type=str, default='logs')
+# data_arg.add_argument('--log_dir', type=str, default='/logs')
+
 
 # Network
 net_arg = add_argument_group('Network')
