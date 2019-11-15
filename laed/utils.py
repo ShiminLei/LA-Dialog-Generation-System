@@ -9,7 +9,8 @@ import logging
 from datetime import datetime
 import torch
 # from nltk.tokenize.moses import MosesDetokenizer
-from mosestokenizer import MosesTokenizer, MosesDetokenizer
+# from mosestokenizer import MosesTokenizer, MosesDetokenizer
+from sacremoses import MosesTokenizer, MosesDetokenizer
 import nltk
 import sys
 from collections import defaultdict

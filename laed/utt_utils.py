@@ -51,8 +51,10 @@ def generate(model, data_feed, config, evaluator, num_batch=1, dest_f=None):
                 logger.info("Target: {}".format(true_str))
                 logger.info("Predict: {}\n".format(pred_str))
             else:
-                dest_f.write("Target: {}\n".format(true_str))
-                dest_f.write("Predict: {}\n\n".format(pred_str))
+                # dest_f.write("Target: {}\n".format(true_str))
+                # dest_f.write("Predict: {}\n\n".format(pred_str))
+                dest_f.write("Target: {}\n".format(true_str).encode())
+                dest_f.write("Predict: {}\n\n".format(pred_str).encode())
 
     if dest_f is None:
         logging.info(evaluator.get_report(include_error=dest_f is not None))
