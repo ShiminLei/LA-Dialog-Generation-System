@@ -1,3 +1,4 @@
+FROM ubuntu:16.04
 FROM python:3
 FROM pytorch/pytorch:0.4-cuda9-cudnn7-devel
 
