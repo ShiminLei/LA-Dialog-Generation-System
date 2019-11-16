@@ -214,16 +214,16 @@ class DailyDialogCorpus(object):
         print("Done loading corpus")
 
     def _read_file(self, path):
-        # with open(os.path.join(path, 'dialogues.txt'), 'rb') as f:
-        with open(os.path.join(path, 'dialogues.txt'), 'r') as f:
+        with open(os.path.join(path, 'dialogues.txt'), 'rb') as f:
+        # with open(os.path.join(path, 'dialogues.txt'), 'r') as f:
             txt_lines = f.readlines()
 
-        # with open(os.path.join(path, 'dialogues_act.txt'), 'rb') as f:
-        with open(os.path.join(path, 'dialogues_act.txt'), 'r') as f:
+        with open(os.path.join(path, 'dialogues_act.txt'), 'rb') as f:
+        # with open(os.path.join(path, 'dialogues_act.txt'), 'r') as f:
             da_lines = f.readlines()
 
-        # with open(os.path.join(path, 'dialogues_emotion.txt'), 'rb') as f:
-        with open(os.path.join(path, 'dialogues_emotion.txt'), 'r') as f:
+        with open(os.path.join(path, 'dialogues_emotion.txt'), 'rb') as f:
+        # with open(os.path.join(path, 'dialogues_emotion.txt'), 'r') as f:
             emotion_lines = f.readlines()
 
         combined_data = [(t, d, e) for t, d, e in zip(txt_lines, da_lines, emotion_lines)]
