@@ -241,7 +241,7 @@ class DailyDialogCorpus(object):
                            speaker=0,
                            meta=None)]
 
-            raw_dialog = raw_dialog.decode('ascii', 'ignore').encode()
+            # raw_dialog = raw_dialog.decode('ascii', 'ignore').encode()
             raw_dialog = raw_dialog.split('__eou__')[0:-1]
             raw_act = raw_act.split()
             raw_emotion = raw_emotion.split()
