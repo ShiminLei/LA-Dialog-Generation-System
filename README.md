@@ -78,5 +78,4 @@ All trained models and log files are saved to the *log* folder. To run a existin
 - Run the script 
 
 ## Docker using
-docker run -it --rm -v /home/ubuntu/dockerWork/laedLogs:/logs lsm503622593/laed python ./ptb-utt.py --log_dir /logs --max_epoch 1 --ckpt_step 5
-
+docker run -it --rm --gpus all -v /home/ubuntu/LA-Dialog-Generation-System:/laed lsm503622593/laed python /laed/ptb-utt.py --data_dir /laed/data/ptb --log_dir /laed/logs --max_epoch 1 --ckpt_step 5
