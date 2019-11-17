@@ -11,7 +11,7 @@ nohup python ptb-utt.py --max_epoch 1 --ckpt_step 100 &> /dev/null &
 #$ ls -tal
 #./uva_run.sh
 
-#python ptb-utt.py --max_epoch 1 --ckpt_step 5 --use_gpu False  ok
+#python ptb-utt.py --max_epoch 1 --ckpt_step 1 --use_gpu False  ok
 #python dailydialog-utt-skip.py --max_epoch 1 --ckpt_step 1 --use_gpu False ok
-#python stanford-ae.py --max_epoch 1 --ckpt_step 5 --use_gpu False
-#python stanford-skip.py --max_epoch 1 --ckpt_step 5 --use_gpu False
+#python stanford-ae.py --max_epoch 1 --ckpt_step 1 --use_gpu False
+#python stanford-skip.py --max_epoch 1 --ckpt_step 1 --use_gpu False

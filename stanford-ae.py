@@ -142,22 +142,27 @@ def main(config):
     selected_outs = dialog_utils.selective_generate(model, test_feed, config, selected_clusters)
     print(len(selected_outs))
 
-    with open(os.path.join(dump_file+'.json'), 'wb') as f:
+    # with open(os.path.join(dump_file+'.json'), 'wb') as f:
+    with open(os.path.join(dump_file + '.json'), 'w') as f:
         json.dump(selected_clusters, f, indent=2)
 
-    with open(os.path.join(dump_file+'.out.json'), 'wb') as f:
+    # with open(os.path.join(dump_file+'.out.json'), 'wb') as f:
+    with open(os.path.join(dump_file + '.out.json'), 'w') as f:
         json.dump(selected_outs, f, indent=2)
 
-    with open(os.path.join(dump_file), "wb") as f:
+    # with open(os.path.join(dump_file), "wb") as f:
+    with open(os.path.join(dump_file), "w") as f:
         print("Dumping test to {}".format(dump_file))
         dialog_utils.dump_latent(model, test_feed, config, f, num_batch=None)
 
-    with open(os.path.join(test_file), "wb") as f:
+    # with open(os.path.join(test_file), "wb") as f:
+    with open(os.path.join(test_file), "w") as f:
         print("Saving test to {}".format(test_file))
         dialog_utils.gen_with_cond(model, test_feed, config, num_batch=None,
                                    dest_f=f)
 
-    with open(os.path.join(test_file+'.txt'), "wb") as f:
+    # with open(os.path.join(test_file+'.txt'), "wb") as f:
+    with open(os.path.join(test_file + '.txt'), "w") as f:
         print("Saving test to {}".format(test_file))
         dialog_utils.generate(model, test_feed, config, evaluator, num_batch=None,
                                    dest_f=f)
