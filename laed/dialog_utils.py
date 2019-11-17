@@ -229,7 +229,8 @@ def gen_with_cond(model, data_feed, config, num_batch=1, dest_f=None):
         if dest_f is None:
             logger.info(msg)
         else:
-            dest_f.write(msg+'\n')
+            # dest_f.write(msg+'\n')
+            dest_f.write((msg + '\n').encode())
 
     while True:
         batch = data_feed.next_batch()
