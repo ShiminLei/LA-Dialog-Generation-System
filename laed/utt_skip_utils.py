@@ -81,7 +81,7 @@ def generate(model, data_feed, config, evaluator, num_batch=1, dest_f=None):
         logging.info(evaluator.get_report(include_error=dest_f is not None))
     else:
         # dest_f.write(evaluator.get_report(include_error=dest_f is not None))
-        dest_f.write(evaluator.get_report(include_error=dest_f is not None))
+        dest_f.write(evaluator.get_report(include_error=dest_f is not None).encode())
     logger.info("Generation Done")
 
 
