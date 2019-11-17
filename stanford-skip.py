@@ -163,7 +163,8 @@ def main(config):
         dialog_utils.gen_with_cond(model, test_feed, config, num_batch=None,
                                    dest_f=f)
 
-    with open(os.path.join(test_file+'.txt'), "wb") as f:
+    # with open(os.path.join(test_file+'.txt'), "wb") as f:
+    with open(os.path.join(test_file + '.txt'), "w") as f:
         print("Saving test to {}".format(test_file))
         dialog_utils.generate(model, test_feed, config, evaluator, num_batch=None,
                                    dest_f=f)
