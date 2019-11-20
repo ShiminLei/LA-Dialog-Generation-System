@@ -100,9 +100,11 @@ def main(config):
     corpus_client = corpora.PTBCorpus(config)
 
     dial_corpus = corpus_client.get_corpus()
+    # print(dial_corpus)
     train_dial, valid_dial, test_dial = dial_corpus['train'],\
                                         dial_corpus['valid'],\
                                         dial_corpus['test']
+    # print(valid_dial[:2])
 
     evaluator = evaluators.BleuEvaluator("CornellMovie")
 

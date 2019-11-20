@@ -33,6 +33,7 @@ def get_config():
 # Data
 data_arg = add_argument_group('Data')
 data_arg.add_argument('--data_dir', type=str, nargs='+', default=['data/meld'])
+# data_arg.add_argument('--data_dir', type=str, nargs='+', default=['data/ptb'])
 data_arg.add_argument('--log_dir', type=str, default='logs')
 
 
@@ -95,6 +96,7 @@ logger = logging.getLogger()
 
 
 def main(config):
+    # print(config)
     prepare_dirs_loggers(config, os.path.basename(__file__))
 
     corpus_client = corpora.MELDCorpus(config)
@@ -103,15 +105,16 @@ def main(config):
     train_dial, valid_dial, test_dial = dial_corpus['train'],\
                                         dial_corpus['valid'],\
                                         dial_corpus['test']
-
+    # print(valid_dial[:2])
+    # print(train_dial[0])
     evaluator = evaluators.BleuEvaluator("CornellMovie")
-
+    #
     # create data loader that feed the deep models
     train_feed = data_loaders.PTBDataLoader("Train", train_dial, config)
     valid_feed = data_loaders.PTBDataLoader("Valid", valid_dial, config)
     test_feed = data_loaders.PTBDataLoader("Test", test_dial, config)
     model = sent_models.DiVAE(corpus_client, config)
-
+    #
     if config.forward_only:
         test_file = os.path.join(config.log_dir, config.load_sess,
                                  "{}-test-{}.txt".format(get_time(), config.gen_type))
@@ -135,7 +138,7 @@ def main(config):
             print("Training stopped by keyboard.")
 
 
-    config.batch_size = 50
+    config.batch_size = 1
     model.load_state_dict(torch.load(model_file))
 
     engine.validate(model, test_feed, config)
