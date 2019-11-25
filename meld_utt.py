@@ -97,7 +97,7 @@ logger = logging.getLogger()
 def main(config):
     prepare_dirs_loggers(config, os.path.basename(__file__))
 
-    corpus_client = corpora.PTBCorpus(config)
+    corpus_client = corpora.MELDCorpus(config)
 
     dial_corpus = corpus_client.get_corpus()
     train_dial, valid_dial, test_dial = dial_corpus['train'],\
