@@ -7,6 +7,7 @@ import json
 from laed.utils import get_tokenize, get_chat_tokenize, missingdict, Pack
 import logging
 import os
+import pandas as pd
 import itertools
 from collections import defaultdict
 import copy
@@ -310,3 +311,64 @@ class DailyDialogCorpus(object):
         id_valid = self._to_id_corpus(self.valid_corpus)
         id_test = self._to_id_corpus(self.test_corpus)
         return Pack(train=id_train, valid=id_valid, test=id_test)
+
+
+class MELDCorpus(object):
+    logger = logging.getLogger()
+
+    def __init__(self, config):
+        self.config = config
+        self.config = config
+        self._path = config.data_dir[0]
+        self.max_utt_len = config.max_utt_len
+        self.tokenize = get_chat_tokenize()
+        self.train_corpus = self._read_file(os.path.join(self._path, 'train_sent_emo.csv'))
+        # print(self.train_corpus[:3])
+        self.valid_corpus = self._read_file(os.path.join(self._path, 'dev_sent_emo.csv'))
+        self.test_corpus = self._read_file(os.path.join(self._path, 'test_sent_emo.csv'))
+        self._build_vocab(config.max_vocab_cnt)
+        print("Done loading corpus")
+
+
+    def _read_file(self, path):
+        # with open(path, 'rb') as f:
+        df_train = pd.read_csv(path)
+        utt = df_train['Utterance'].tolist()
+        # with open(path, 'r') as f:
+        #     lines = f.readlines()
+
+        return self._process_data(utt)
+
+    def _process_data(self, data):
+        all_text = []
+        all_lens = []
+        for line in data:
+            # print(line)
+            # line = line.replace(',', ' ')
+            tokens = [BOS] + self.tokenize(line) + [EOS]
+            all_lens.append(len(tokens))
+            all_text.append(Pack(utt=tokens, speaker=0))
+        print("Max utt len %d, mean utt len %.2f" % (
+            np.max(all_lens), float(np.mean(all_lens))))
+        return all_text
+
+    def _build_vocab(self, max_vocab_cnt):
+        all_words = []
+        for turn in self.train_corpus:
+            all_words.extend(turn.utt)
+        vocab_count = Counter(all_words).most_common()
+        raw_vocab_size = len(vocab_count)
+        discard_wc = np.sum([c for t, c, in vocab_count[max_vocab_cnt:]])
+        vocab_count = vocab_count[0:max_vocab_cnt]
+
+        # create vocabulary list sorted by count
+        print("Load corpus with train size %d, valid size %d, "
+              "test size %d raw vocab size %d vocab size %d at cut_off %d OOV rate %f"
+              % (len(self.train_corpus), len(self.valid_corpus),
+                 len(self.test_corpus),
+                 raw_vocab_size, len(vocab_count), vocab_count[-1][1],
+                 float(discard_wc) / len(all_words)))
+
+        self.vocab = [PAD, UNK] + [t for t, cnt in vocab_count]
+        self.rev_vocab = {t: idx for idx, t in enumerate(self.vocab)}
+        self.unk_id = self.rev_vocab[UNK]

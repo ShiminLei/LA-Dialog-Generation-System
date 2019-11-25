@@ -31,6 +31,7 @@
 #python ptb-utt.py --k 4 --y_size 5 --log_dir logs/exp3/ptb_DI_VAE_K4_M5
 
 
+
 # --------------------
 
 #nohup python ptb-utt.py --max_epoch 1 --ckpt_step 100 &> /dev/null &
