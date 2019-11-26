@@ -372,3 +372,27 @@ class MELDCorpus(object):
         self.vocab = [PAD, UNK] + [t for t, cnt in vocab_count]
         self.rev_vocab = {t: idx for idx, t in enumerate(self.vocab)}
         self.unk_id = self.rev_vocab[UNK]
+        # print(self.vocab)
+        # print(self.rev_vocab)
+        # print(self.unk_id)
+
+    def _sent2id(self, sent):
+        return [self.rev_vocab.get(t, self.unk_id) for t in sent]
+
+    def _to_id_corpus(self, data):
+        results = []
+        for line in data:
+            id_turn = Pack(utt=self._sent2id(line.utt),
+                           speaker=line.speaker,
+                           meta=line.get('meta'))
+            results.append(id_turn)
+        return results
+
+    def get_corpus(self):
+        id_train = self._to_id_corpus(self.train_corpus)
+        id_valid = self._to_id_corpus(self.valid_corpus)
+        id_test = self._to_id_corpus(self.test_corpus)
+        return Pack(train=id_train, valid=id_valid, test=id_test)
+
+
+
