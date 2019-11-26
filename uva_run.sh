@@ -8,6 +8,13 @@
 # DI_VAE
 #python ptb-utt.py --log_dir logs/exp1/ptb_DI_VAE
 
+# DAE
+#python meld-utt.py --use_reg_kl False --log_dir logs/exp1/meld_DAE
+# DVAE
+#python meld-utt.py --batch_size 1 --log_dir logs/exp1/meld_DVAE
+# DI_VAE
+#python meld-utt.py --log_dir logs/exp1/meld_DI_VAE
+
 # DST
 #python dailydialog-utt-skip.py --use_reg_kl False --log_dir logs/exp1/DD_DST
 # DVST
