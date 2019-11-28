@@ -31,6 +31,12 @@
 #python ptb-utt.py --batch_size 40 --log_dir logs/exp2/ptb_DI_VAE_batch40
 #python ptb-utt.py --batch_size 60 --log_dir logs/exp2/ptb_DI_VAE_batch60
 
+#python meld-utt.py --batch_size 2 --log_dir logs/exp2/meld_DI_VAE_batch2
+#python meld-utt.py --batch_size 5 --log_dir logs/exp2/meld_DI_VAE_batch5
+#python meld-utt.py --batch_size 10 --log_dir logs/exp2/meld_DI_VAE_batch10
+#python meld-utt.py --batch_size 30 --log_dir logs/exp2/meld_DI_VAE_batch30
+#python meld-utt.py --batch_size 40 --log_dir logs/exp2/meld_DI_VAE_batch40
+#python meld-utt.py --batch_size 60 --log_dir logs/exp2/meld_DI_VAE_batch60
 
 # exp3_KM
 #python ptb-utt.py --k 1000 --y_size 1 --log_dir logs/exp3/ptb_DI_VAE_K1000_M1
