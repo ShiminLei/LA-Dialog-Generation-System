@@ -87,7 +87,7 @@ misc_arg.add_argument('--gen_type', type=str, default='greedy')
 misc_arg.add_argument('--avg_type', type=str, default='word')
 misc_arg.add_argument('--beam_size', type=int, default=10)
 misc_arg.add_argument('--forward_only', type=str2bool, default=False)
-data_arg.add_argument('--load_sess', type=str, default="2018-05-28T14-08-32-dailydialog-utt-skip.py")
+data_arg.add_argument('--load_sess', type=str, default="2018-05-28T14-08-32-meld-utt-skip.py")
 
 
 logger = logging.getLogger()
