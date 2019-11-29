@@ -89,7 +89,7 @@ class SMDDialogSkipLoader(DataLoader):
     def flatten_dialog(self, data, backward_size):
         results = []
         for dialog in data:
-            for i in range(1, len(dialog)-1):
+            for i in range(1, len(dialog) - 1):
                 e_id = i
                 s_id = max(0, e_id - backward_size)
 
@@ -141,7 +141,7 @@ class SMDDialogSkipLoader(DataLoader):
                                 self.max_utt_size), dtype=np.int32)
         vec_outs = np.zeros((self.batch_size, np.max(out_lens)), dtype=np.int32)
         vec_prevs = np.zeros((self.batch_size, np.max(prev_lens)), dtype=np.int32)
-        vec_nexts = np.zeros((self.batch_size, np.max(next_lens)),dtype=np.int32)
+        vec_nexts = np.zeros((self.batch_size, np.max(next_lens)), dtype=np.int32)
         vec_out_lens = np.array(out_lens)
         vec_prev_lens = np.array(prev_lens)
         vec_next_lens = np.array(next_lens)
@@ -182,7 +182,7 @@ class DailyDialogSkipLoader(DataLoader):
     def flatten_dialog(self, data, backward_size):
         results = []
         for dialog in data:
-            for i in range(1, len(dialog)-1):
+            for i in range(1, len(dialog) - 1):
                 e_id = i
                 s_id = max(0, e_id - backward_size)
 
@@ -190,7 +190,7 @@ class DailyDialogSkipLoader(DataLoader):
                 prev = dialog[i - 1]
                 next = dialog[i + 1]
 
-                response['utt'] = self.pad_to(self.max_utt_size,response.utt, do_pad=False)
+                response['utt'] = self.pad_to(self.max_utt_size, response.utt, do_pad=False)
                 prev['utt'] = self.pad_to(self.max_utt_size, prev.utt, do_pad=False)
                 next['utt'] = self.pad_to(self.max_utt_size, next.utt, do_pad=False)
 
@@ -234,7 +234,7 @@ class DailyDialogSkipLoader(DataLoader):
                                 self.max_utt_size), dtype=np.int32)
         vec_outs = np.zeros((self.batch_size, np.max(out_lens)), dtype=np.int32)
         vec_prevs = np.zeros((self.batch_size, np.max(prev_lens)), dtype=np.int32)
-        vec_nexts = np.zeros((self.batch_size, np.max(next_lens)),dtype=np.int32)
+        vec_nexts = np.zeros((self.batch_size, np.max(next_lens)), dtype=np.int32)
         vec_out_lens = np.array(out_lens)
         vec_prev_lens = np.array(prev_lens)
         vec_next_lens = np.array(next_lens)
@@ -256,6 +256,49 @@ class DailyDialogSkipLoader(DataLoader):
                     outputs=vec_outs, output_lens=vec_out_lens,
                     metas=metas, prevs=vec_prevs, prev_lens=vec_prev_lens,
                     nexts=vec_nexts, next_lens=vec_next_lens)
+
+
+class DailyDialogLoader(DataLoader):
+    def __init__(self, name, data, config):
+        super(DailyDialogLoader, self).__init__(name, fix_batch=config.fix_batch)
+        self.name = name
+        self.max_utt_size = config.max_utt_len
+        self.data = self.flatten_dialog(data)
+        self.data_size = len(self.data)
+        if config.fix_batch:
+            all_ctx_lens = [len(d.context) for d in self.data]
+            self.indexes = list(np.argsort(all_ctx_lens))[::-1]
+        else:
+            self.indexes = list(range(len(self.data)))
+
+    def flatten_dialog(self, data):
+        results = []
+        for dialog in data:
+            for i in range(len(dialog) - 1):
+                response = dialog[i]
+                response['utt'] = self.pad_to(self.max_utt_size, response.utt, do_pad=False)
+                results.append(Pack(response=response))
+        return results
+
+    def _prepare_batch(self, selected_index):
+        rows = [self.data[idx] for idx in selected_index]
+        out_utts, out_lens = [], []
+        metas = []
+        for row in rows:
+            resp = row.response
+            out_utt = resp.utt
+            out_utt = out_utt
+            out_utts.append(out_utt)
+            out_lens.append(len(out_utt))
+            metas.append(resp.meta)
+
+        vec_outs = np.zeros((self.batch_size, np.max(out_lens)), dtype=np.int32)
+        vec_out_lens = np.array(out_lens)
+
+        for b_id in range(self.batch_size):
+            vec_outs[b_id, 0:vec_out_lens[b_id]] = out_utts[b_id]
+
+        return Pack(outputs=vec_outs, output_lens=vec_out_lens, metas=metas)
 
 
 # PTB
@@ -288,5 +331,4 @@ class PTBDataLoader(DataLoader):
         for idx, row in enumerate(rows):
             inputs[idx, 0:input_lens[idx]] = row.utt
 
-        return Pack(outputs=inputs, output_lens=input_lens, metas=[None]*len(rows))
-
+        return Pack(outputs=inputs, output_lens=input_lens, metas=[None] * len(rows))

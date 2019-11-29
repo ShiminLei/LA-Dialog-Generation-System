@@ -43,8 +43,12 @@
 #python ptb-utt.py --k 10 --y_size 3 --log_dir logs/exp3/ptb_DI_VAE_K10_M3
 #python ptb-utt.py --k 4 --y_size 5 --log_dir logs/exp3/ptb_DI_VAE_K4_M5
 
+#python meld-utt.py --k 1000 --y_size 1 --log_dir logs/exp3/meld_DI_VAE_K1000_M1
+#python meld-utt.py --k 10 --y_size 3 --log_dir logs/exp3/meld_DI_VAE_K10_M3
+#python meld-utt.py --k 4 --y_size 5 --log_dir logs/exp3/meld_DI_VAE_K4_M5
 
-
+# exp4_LA
+python dailydialog-utt-skip.py  --log_dir logs/exp4/DD
 # --------------------
 
 #nohup python ptb-utt.py --max_epoch 1 --ckpt_step 100 &> /dev/null &
