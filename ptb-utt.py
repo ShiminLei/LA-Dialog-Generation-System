@@ -104,7 +104,7 @@ def main(config):
     train_dial, valid_dial, test_dial = dial_corpus['train'],\
                                         dial_corpus['valid'],\
                                         dial_corpus['test']
-    # print(valid_dial[:2])
+    print(valid_dial[:2])
 
     evaluator = evaluators.BleuEvaluator("CornellMovie")
 

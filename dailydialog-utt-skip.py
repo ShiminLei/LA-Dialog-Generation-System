@@ -102,6 +102,8 @@ def main(config):
                                         dial_corpus['valid'],\
                                         dial_corpus['test']
 
+    # print(train_dial[0])
+
     evaluator = evaluators.BleuEvaluator(os.path.basename(__file__))
 
     # create data loader that feed the deep models

@@ -103,11 +103,10 @@ def main(config):
                                         dial_corpus['test']
 
     evaluator = evaluators.BleuEvaluator(os.path.basename(__file__))
-
     # create data loader that feed the deep models
-    train_feed = data_loaders.DailyDialogSkipLoader("Train", train_dial, config)
-    valid_feed = data_loaders.DailyDialogSkipLoader("Valid", valid_dial, config)
-    test_feed = data_loaders.DailyDialogSkipLoader("Test", test_dial, config)
+    train_feed = data_loaders.MELDSkipLoader("Train", train_dial, config)
+    valid_feed = data_loaders.MELDSkipLoader("Valid", valid_dial, config)
+    test_feed = data_loaders.MELDSkipLoader("Test", test_dial, config)
     model = sent_models.DiVST(corpus_client, config)
 
     if config.forward_only:
