@@ -1,13 +1,12 @@
 # Interpretable Neural Dialog Generation via Discrete Sentence Representation Learning
-Codebase for [Unsupervised Discrete Sentence Representation Learning for Interpretable Neural Dialog Generation](https://arxiv.org/abs/1804.08069), published as a long paper in ACL 2018. You can find my presentation slides [here](https://www.cs.cmu.edu/~tianchez/data/ACL2018-talk.pdf).
+Codebase for [Unsupervised Discrete Sentence Representation Learning for Interpretable Neural Dialog Generation](https://arxiv.org/abs/1804.08069), published as a long paper in ACL 2018. Presentation slides [here](https://www.cs.cmu.edu/~tianchez/data/ACL2018-talk.pdf).
 
 <p align="center">
   <img width="700" src="dsr-simple.png">
 </p>
 
-If you use any source codes or datasets included in this toolkit in your
-work, please cite the following paper. The bibtex are listed below:
- 
+The bibtex are listed below:
+
     @article{zhao2018unsupervised,
       title={Unsupervised Discrete Sentence Representation Learning for Interpretable Neural Dialog Generation},
       author={Zhao, Tiancheng and Lee, Kyusong and Eskenazi, Maxine},
@@ -16,8 +15,8 @@ work, please cite the following paper. The bibtex are listed below:
     }
 
 ## Requirements
-    python 2.7
-    pytorch >= 0.3.0.post4
+    python 3.7
+    pytorch
     numpy
     nltk
 
@@ -46,7 +45,7 @@ The next two train a latent-action encoder decoder with either DI-VAE or DI-VST.
 #### DI-VAE + Encoder Decoder (AE-ED)
 The following command will first train a DI-VAE on the Stanford multi domain dialog dataset, and then train a 
 hierarchical encoder decoder (HRED) model with the latent code from the DI-VAE.
-   
+
     python stanford-ae.py
 
 #### DI-VST + Encoder Decoder (ST-ED)
