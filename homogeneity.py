@@ -34,7 +34,7 @@ if __name__ == '__main__':
         data = pickle.load(f)
     process(data)
 
-    with open('logs/exp4/2019-11-28T22-03-58-dailydialog-utt.py/2019-11-28T22-05-41-z.pkl', 'rb') as f:
+    with open('logs/exp4/2019-11-30T18-40-43-dailydialog-utt.py/2019-11-30T18-41-01-z.pkl', 'rb') as f:
         data = pickle.load(f)
     process(data)
 

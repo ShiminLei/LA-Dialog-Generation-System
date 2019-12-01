@@ -22,6 +22,13 @@
 #DI_VST
 #python dailydialog-utt-skip.py --log_dir logs/exp1/DD_DI_VST
 
+# DST
+#python meld-utt-skip.py --use_reg_kl False --log_dir logs/exp1/meld_DST
+# DVST
+#python meld-utt-skip.py --batch_size 1 --log_dir logs/exp1/meld_DVST
+#DI_VST
+#python meld-utt-skip.py --log_dir logs/exp1/meld_DI_VST
+
 
 # exp2_batch
 #python ptb-utt.py --batch_size 2 --log_dir logs/exp2/ptb_DI_VAE_batch2
