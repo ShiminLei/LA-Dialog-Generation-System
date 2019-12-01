@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# -*- coding: utf-8 -*-
-# author: Tiancheng Zhao
 from __future__ import print_function
 import torch.nn.functional as F
 from torch.nn.modules.loss import _Loss

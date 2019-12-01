@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# author: Tiancheng Zhao
 from __future__ import print_function
 
 

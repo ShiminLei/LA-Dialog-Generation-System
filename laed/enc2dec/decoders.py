@@ -1,5 +1,4 @@
-# @Time    : 9/20/17 2:11 PM
-# @Author  : Tiancheng Zhao
+
 
 import torch.nn as nn
 import numpy as np

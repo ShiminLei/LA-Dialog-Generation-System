@@ -1,5 +1,4 @@
-# @Time    : 9/20/17 2:15 PM
-# @Author  : Tiancheng Zhao
+
 import torch
 import torch.nn as nn
 from laed.enc2dec.base_modules import BaseRNN

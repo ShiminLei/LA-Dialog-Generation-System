@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# author: Tiancheng Zhao
 from __future__ import unicode_literals  # at top of module
 from collections import Counter
 import numpy as np

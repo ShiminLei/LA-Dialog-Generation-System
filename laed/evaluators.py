@@ -1,5 +1,4 @@
 # @Time    : 9/25/17 3:54 PM
-# @Author  : Tiancheng Zhao
 from collections import Counter
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer

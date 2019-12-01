@@ -2,60 +2,64 @@
 
 # exp1_compare
 # DAE
-#python ptb-utt.py --use_reg_kl False --log_dir logs/exp1/ptb_DAE
+python ptb-utt.py --use_reg_kl False --log_dir logs/exp1/ptb_DAE
 # DVAE
-#python ptb-utt.py --batch_size 1 --log_dir logs/exp1/ptb_DVAE
+python ptb-utt.py --batch_size 1 --log_dir logs/exp1/ptb_DVAE
 # DI_VAE
-#python ptb-utt.py --log_dir logs/exp1/ptb_DI_VAE
+python ptb-utt.py --log_dir logs/exp1/ptb_DI_VAE
 
 # DAE
-#python meld-utt.py --use_reg_kl False --log_dir logs/exp1/meld_DAE
+python meld-utt.py --use_reg_kl False --log_dir logs/exp1/meld_DAE
 # DVAE
-#python meld-utt.py --batch_size 1 --log_dir logs/exp1/meld_DVAE
+python meld-utt.py --batch_size 1 --log_dir logs/exp1/meld_DVAE
 # DI_VAE
-#python meld-utt.py --log_dir logs/exp1/meld_DI_VAE
+python meld-utt.py --log_dir logs/exp1/meld_DI_VAE
 
 # DST
-#python dailydialog-utt-skip.py --use_reg_kl False --log_dir logs/exp1/DD_DST
+python dailydialog-utt-skip.py --use_reg_kl False --log_dir logs/exp1/DD_DST
 # DVST
-#python dailydialog-utt-skip.py --batch_size 1 --log_dir logs/exp1/DD_DVST
+python dailydialog-utt-skip.py --batch_size 1 --log_dir logs/exp1/DD_DVST
 #DI_VST
-#python dailydialog-utt-skip.py --log_dir logs/exp1/DD_DI_VST
+python dailydialog-utt-skip.py --log_dir logs/exp1/DD_DI_VST
 
 # DST
-#python meld-utt-skip.py --use_reg_kl False --log_dir logs/exp1/meld_DST
+python meld-utt-skip.py --use_reg_kl False --log_dir logs/exp1/meld_DST
 # DVST
-#python meld-utt-skip.py --batch_size 1 --log_dir logs/exp1/meld_DVST
+python meld-utt-skip.py --batch_size 1 --log_dir logs/exp1/meld_DVST
 #DI_VST
-#python meld-utt-skip.py --log_dir logs/exp1/meld_DI_VST
+python meld-utt-skip.py --log_dir logs/exp1/meld_DI_VST
 
 
 # exp2_batch
-#python ptb-utt.py --batch_size 2 --log_dir logs/exp2/ptb_DI_VAE_batch2
-#python ptb-utt.py --batch_size 5 --log_dir logs/exp2/ptb_DI_VAE_batch5
-#python ptb-utt.py --batch_size 10 --log_dir logs/exp2/ptb_DI_VAE_batch10
-#python ptb-utt.py --batch_size 30 --log_dir logs/exp2/ptb_DI_VAE_batch30
-#python ptb-utt.py --batch_size 40 --log_dir logs/exp2/ptb_DI_VAE_batch40
-#python ptb-utt.py --batch_size 60 --log_dir logs/exp2/ptb_DI_VAE_batch60
+python ptb-utt.py --batch_size 2 --log_dir logs/exp2/ptb_DI_VAE_batch2
+python ptb-utt.py --batch_size 5 --log_dir logs/exp2/ptb_DI_VAE_batch5
+python ptb-utt.py --batch_size 10 --log_dir logs/exp2/ptb_DI_VAE_batch10
+python ptb-utt.py --batch_size 30 --log_dir logs/exp2/ptb_DI_VAE_batch30
+python ptb-utt.py --batch_size 40 --log_dir logs/exp2/ptb_DI_VAE_batch40
+python ptb-utt.py --batch_size 60 --log_dir logs/exp2/ptb_DI_VAE_batch60
 
-#python meld-utt.py --batch_size 2 --log_dir logs/exp2/meld_DI_VAE_batch2
-#python meld-utt.py --batch_size 5 --log_dir logs/exp2/meld_DI_VAE_batch5
-#python meld-utt.py --batch_size 10 --log_dir logs/exp2/meld_DI_VAE_batch10
-#python meld-utt.py --batch_size 30 --log_dir logs/exp2/meld_DI_VAE_batch30
-#python meld-utt.py --batch_size 40 --log_dir logs/exp2/meld_DI_VAE_batch40
-#python meld-utt.py --batch_size 60 --log_dir logs/exp2/meld_DI_VAE_batch60
+python meld-utt.py --batch_size 2 --log_dir logs/exp2/meld_DI_VAE_batch2
+python meld-utt.py --batch_size 5 --log_dir logs/exp2/meld_DI_VAE_batch5
+python meld-utt.py --batch_size 10 --log_dir logs/exp2/meld_DI_VAE_batch10
+python meld-utt.py --batch_size 30 --log_dir logs/exp2/meld_DI_VAE_batch30
+python meld-utt.py --batch_size 40 --log_dir logs/exp2/meld_DI_VAE_batch40
+python meld-utt.py --batch_size 60 --log_dir logs/exp2/meld_DI_VAE_batch60
 
 # exp3_KM
-#python ptb-utt.py --k 1000 --y_size 1 --log_dir logs/exp3/ptb_DI_VAE_K1000_M1
-#python ptb-utt.py --k 10 --y_size 3 --log_dir logs/exp3/ptb_DI_VAE_K10_M3
-#python ptb-utt.py --k 4 --y_size 5 --log_dir logs/exp3/ptb_DI_VAE_K4_M5
+python ptb-utt.py --k 1000 --y_size 1 --log_dir logs/exp3/ptb_DI_VAE_K1000_M1
+python ptb-utt.py --k 10 --y_size 3 --log_dir logs/exp3/ptb_DI_VAE_K10_M3
+python ptb-utt.py --k 4 --y_size 5 --log_dir logs/exp3/ptb_DI_VAE_K4_M5
 
-#python meld-utt.py --k 1000 --y_size 1 --log_dir logs/exp3/meld_DI_VAE_K1000_M1
-#python meld-utt.py --k 10 --y_size 3 --log_dir logs/exp3/meld_DI_VAE_K10_M3
-#python meld-utt.py --k 4 --y_size 5 --log_dir logs/exp3/meld_DI_VAE_K4_M5
+python meld-utt.py --k 1000 --y_size 1 --log_dir logs/exp3/meld_DI_VAE_K1000_M1
+python meld-utt.py --k 10 --y_size 3 --log_dir logs/exp3/meld_DI_VAE_K10_M3
+python meld-utt.py --k 4 --y_size 5 --log_dir logs/exp3/meld_DI_VAE_K4_M5
 
 # exp4_LA
-python dailydialog-utt-skip.py  --log_dir logs/exp4/DD
+python dailydialog-utt.py
+python dailydialog-utt-skip.py
+
+
+
 # --------------------
 
 #nohup python ptb-utt.py --max_epoch 1 --ckpt_step 100 &> /dev/null &

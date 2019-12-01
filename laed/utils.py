@@ -1,5 +1,4 @@
-# @Time    : 9/19/17 5:16 PM
-# @Author  : Tiancheng Zhao
+
 
 from __future__ import print_function
 

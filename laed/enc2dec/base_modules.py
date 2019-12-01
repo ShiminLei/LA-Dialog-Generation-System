@@ -1,5 +1,4 @@
-# @Time    : 9/20/17 2:10 PM
-# @Author  : Tiancheng Zhao
+
 import torch.nn as nn
 from laed.dataset.corpora import PAD, EOS
 import torch

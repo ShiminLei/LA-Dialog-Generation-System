@@ -1,4 +1,3 @@
-#    Copyright (C) 2017 Tiancheng Zhao, Carnegie Mellon University
 from __future__ import print_function
 import numpy as np
 from laed.utils import Pack
